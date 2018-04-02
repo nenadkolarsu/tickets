@@ -177,7 +177,7 @@ public class Reservations implements Serializable {
 
     @NotNull
     @Min(1)
-    @Max(10)	
+//    @Max(10)	
 	public Integer getSeat() {
 		return seat;
 	}

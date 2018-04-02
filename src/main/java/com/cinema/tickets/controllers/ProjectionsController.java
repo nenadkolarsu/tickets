@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 // import org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView;
 
+import com.cinema.tickets.models.Cinemas;
 import com.cinema.tickets.models.Movies;
 import com.cinema.tickets.models.Projections;
 import com.cinema.tickets.models.Theatres;
@@ -177,20 +178,27 @@ public class ProjectionsController {
 //      return mav;
 //    }
 //    
+    
 	@RequestMapping(value = "/delete_projection.html")
-	public String deleteTypeDocuments(@RequestParam Long id, HttpServletRequest request) {
+	public String deleteProjections(@RequestParam Long id, HttpServletRequest request) {
 
+		Projections aa = projectionsRepository.getOne(id);
+	    if (!aa.getReservations().isEmpty()) {	
+	    	return "redirect:414.html?ops=Reservation exist, can't delete projection!";
+	    }
+	    
 		try {
 			projectionsRepository.deleteById(id);
 		}
 		catch (Exception ex)
 		{
-
-		      return "redirect:414.html";
+		    return "redirect:414.html?ops=Can't delete record";
 		}
 		
 		return "redirect:projections.html";
+
 	}
+	
 //	
 //    @RequestMapping(path = "/projections_pdf.html", method = RequestMethod.GET)
 //    public ModelAndView printTypetypeOfDocumentsReport() {

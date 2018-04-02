@@ -123,7 +123,7 @@ public class CinemasController {
 
 		Cinemas aa = cinemasRepository.getOne(id);
 	    if (!aa.getTheatres().isEmpty()) {	
-	    	return "redirect:414.html?ops=Child exist, can't delete parent!";
+	    	return "redirect:414.html?ops=Theatre exist, can't delete cinema!";
 	    }
 	    
 		try {
@@ -136,7 +136,7 @@ public class CinemasController {
 		
 		return "redirect:cinemas.html";
 	}
-//	
+	
 //    @RequestMapping(path = "/cinemas_pdf.html", method = RequestMethod.GET)
 //    public ModelAndView printTypetypeOfDocumentsReport() {
 //
@@ -146,7 +146,7 @@ public class CinemasController {
 //       
 //
 //        Map<String, Object> params = new HashMap<>();
-//        params.put("datasource", cinemasRepository.findAllByOrderByIdDesc());
+//        params.put("datasource", cinemasRepository.findAllByOrderByIdAsc());
 //        params.put("title", "Cinemas");
 //
 //        params.put("company",  companyDetails.companyDetails1);
@@ -154,5 +154,5 @@ public class CinemasController {
 //        params.put("city",  companyDetails.companyDetails3);
 //        return new ModelAndView(view, params);
 //    }
-	
+//	
 }

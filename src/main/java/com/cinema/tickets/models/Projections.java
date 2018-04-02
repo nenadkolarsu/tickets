@@ -8,7 +8,10 @@ package com.cinema.tickets.models;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +23,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -34,6 +38,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -237,7 +242,17 @@ public class Projections implements Serializable {
 	}
     
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "projections")
+    private List<Reservations> reservations = new ArrayList<>();
 
+	public List<Reservations> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<Reservations> reservations) {
+		this.reservations = reservations;
+	}
 
     
 }
