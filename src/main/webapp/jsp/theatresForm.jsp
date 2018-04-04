@@ -121,9 +121,7 @@
 <!-- 										<button type="reset" class="btn-lg button-novi"> -->
 <!-- 											<i class='fa fa-reply'></i> Cancel -->
 <!-- 										</button> -->
-										<input type="button" onclick="location.href='/';" value="Cancel"  class="btn-lg button-novi"/>
-<%-- 										<input type="button" onclick="location.href='dokumentstavkefinal.html?page=0&id=${dokumentStavke.idDokument.id}';" value="Cancel"  class="btn-lg button-novi"/> --%>
-
+										<input type="button" onclick="location.href='/theatres.html';" value="Cancel"  class="btn-lg button-novi"/>
 									</form:form>
 								</div>
 							</div>

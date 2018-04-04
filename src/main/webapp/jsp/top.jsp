@@ -46,9 +46,10 @@
           <ul class="dropdown-menu">
             <li><a href='/cinemas.html'>Cinemas</a></li>
             <li><a href='/theatres.html'>Theatres</a></li>
+             <li class="divider"></li> 
             <li><a href='/projections.html'>Projections</a></li>
             <li><a href='/movies.html'>Movies</a></li>
-            <li><a href='/reservations.html'>Reservations</a></li>
+<!--             <li><a href='/reservations.html'>Reservations</a></li> -->
 <!--             <li><a href="#">Seats</a></li> -->
           </ul>
         </li>
@@ -56,7 +57,7 @@
         <li><a href='/availableprojections.html'>Make reservation</a></li>
         <li><a href="/reservations.html">View reservations</a></li>
 
-        <li><a href="#">Page 3</a></li>
+<!--         <li><a href="#">Page 3</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

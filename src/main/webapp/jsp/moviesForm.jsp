@@ -7,12 +7,6 @@
 
 		<div id="page-wrapper">
 
-<!-- 			<div class="row"> -->
-<!-- 				<div class="col-lg-12"> -->
-<!-- 					<h6 class="page-header"></h6>  -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-
 			<div class="row">
 				<div class="col-lg-12">
 					<div class='panel panel-default'>
@@ -32,21 +26,17 @@
 
 										<div class='form-group ${error != null ? 'has-error' : ''}'>
 											<label class='font-oxygen'>Code</label>
-
 											<form:input type="text" class="form-control " name="code"
 												path="code" value="${movies.code}" autofocus="true"
 												placeholder='Insert code' />
-
 											<p class="help-block">
-												<form:errors path="code" class="help-block text-danger" />
+												<form:errors path="code" class="help-block " />
 											</p>
 										</div>
 
 
 										<div class='form-group ${error != null ? 'has-error' : ''}'>
 											<label class='font-awesome'>Name</label>
-											<%-- 									<input class="form-control" name='name' path='name' placeholder='Unesite naziv' value="${task.name}"> --%>
-
 											<form:input type="text" class="form-control" id="name"
 												path="name" placeholder='Insert name'
 												value="${movies.name}" />
@@ -65,11 +55,11 @@
 											</p>
 										</div>
 
-										<c:out value="${model.movies.status}" />
+<%-- 										<c:out value="${model.movies.status}" /> --%>
 
-										<c:if test="${movies.status}">
-											<c:out value="${movies.code}" />
-										</c:if>
+<%-- 										<c:if test="${movies.status}"> --%>
+<%-- 											<c:out value="${movies.code}" /> --%>
+<%-- 										</c:if> --%>
 
 										<c:set var="salary" scope="session" value="checked">
 										</c:set>
@@ -92,11 +82,10 @@
 
 										<div class='form-group spacer-bottom-30'>
 											<label>Status</label><br /> <label class="radio-inline">
-												<!--                                     	<input type="radio" name="status"  path='status' -->
-												<%--                                     	 checked  value="${task.status}" >Da   --%>
 												<input type="radio" name="status" value="1" path='status'
 												<c:out value="${salary}"/> />
-											</label> <label class="radio-inline"> <%--                                     	<input type="radio" class="col-sm-1" name="status"  path='status' value="${task.status}">Ne --%>
+											</label> <label class="radio-inline"> 
+											<%--                                     	<input type="radio" class="col-sm-1" name="status"  path='status' value="${task.status}">Ne --%>
 												<input type="radio" class="col-sm-1" name="status"
 												value="0" path='status' <c:out value="${salary1}"/> />
 											</label>
@@ -108,9 +97,7 @@
 <!-- 										<button type="reset" class="btn-lg button-novi"> -->
 <!-- 											<i class='fa fa-reply'></i> Cancel -->
 <!-- 										</button> -->
-										<input type="button" onclick="location.href='/';" value="Cancel"  class="btn-lg button-novi"/>
-<%-- 										<input type="button" onclick="location.href='dokumentstavkefinal.html?page=0&id=${dokumentStavke.idDokument.id}';" value="Cancel"  class="btn-lg button-novi"/> --%>
-
+										<input type="button" onclick="location.href='/movies.html';" value="Cancel"  class="btn-lg button-novi"/>
 									</form:form>
 								</div>
 							</div>

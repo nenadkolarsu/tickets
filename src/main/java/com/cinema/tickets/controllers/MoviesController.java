@@ -158,4 +158,13 @@ public class MoviesController {
 //        return new ModelAndView(view, params);
 //    }
 	
+    @RequestMapping(value="/movies_pdf.html")
+    public String selectTag(HttpServletRequest request) {
+
+    	List<Movies> movies = moviesRepository.findAll();      
+		request.setAttribute("states", movies);
+		request.setAttribute("title", "Movies");
+		return "/printing/printCodebook";    
+    } 
+	
 }

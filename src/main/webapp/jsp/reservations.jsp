@@ -74,8 +74,8 @@
             <th style="width: 7%;">Projection&nbsp;<a ng-click="sort_by('projection_date');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
             <th style="width: 7%;">Time&nbsp;<a ng-click="sort_by('projection_date');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
             
-            <th style="width: 7%;">Row&nbsp;<a ng-click="sort_by('projection_date');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>  
-            <th style="width: 7%;">Seat&nbsp;<a ng-click="sort_by('projection_date');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>  
+            <th style="width: 5%;">Row&nbsp;<a ng-click="sort_by('projection_date');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>  
+            <th style="width: 5%;">Seat&nbsp;<a ng-click="sort_by('projection_date');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>  
                                              
             <th style="width: 12%;">Reserved by&nbsp;<a ng-click="sort_by('status');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
             <th style="width: 12%;">Reserved&nbsp;<a ng-click="sort_by('status');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
@@ -93,7 +93,7 @@
                     <td>{{data.row}}</td>
                     <td>{{data.seat}}</td>
                     <td>{{data.name}}</td>
-                    <td>{{data.timestamp | date:"dd.MM.yyyy HH:mm"}}}</td>
+                    <td>{{data.timestamp | date:"dd.MM.yy HH:mm"}}</td>
                     
 <!--                     <td> -->
 <!--                         <a href="make_reservation.html?id={{data.id}}"><i class="glyphicon glyphicon-phone-alt"></i>&nbsp Reserve</a>  -->

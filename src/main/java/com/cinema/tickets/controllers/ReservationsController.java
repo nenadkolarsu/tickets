@@ -75,7 +75,7 @@ public class ReservationsController {
 	
 
 	@RequestMapping(value = "/reservations_new.html", method = RequestMethod.GET)
-	public ModelAndView newCinema(Model model, HttpServletRequest request) { 
+	public ModelAndView newReservation(Model model, HttpServletRequest request) { 
 		model.addAttribute("title", "New reservation");
 
 
@@ -120,6 +120,58 @@ public class ReservationsController {
 		return new ModelAndView("reservationsForm", "reservations", aa);
 
 	}	
+	
+	@RequestMapping(value = "/reservations_new1.html", method = RequestMethod.GET)
+	public ModelAndView newReservation1(Model model, HttpServletRequest request, @RequestParam Long id) { 
+		model.addAttribute("title", "New reservation");
+
+		Reservations aa = new Reservations();
+
+	    aa.setStatus(true);
+	    Date date = new Date();
+	    aa.setTimestamp(date); 
+
+	    Projections dd = projectionsRepository.getOne(id);
+	    
+//	    List<Projections> deptList0 = projectionsRepository.findAll(); 
+	      
+	    Map<Long, String> dept0 = new HashMap<>();
+		HttpSession sess = request.getSession();
+		
+//		for (Projections d : deptList0) {
+	          dept0.put(dd.getId(), "Projection number: " + dd.getId() + 
+	        		  " Date: " + dd.getProjection_date() 
+	        		  + " Time: " + dd.getProjection_time() + " Movie: " + dd.getMovies().getName());
+//	          }
+		
+	    sess.setAttribute("eProjections", dept0);
+	    
+	    List<Theatres> deptList = theatresRepository.findAll(); 
+	      
+	    Map<Long, String> dept = new HashMap<>();
+//		HttpSession sess = request.getSession();
+		
+		for (Theatres d : deptList) {
+	          dept.put(d.getId(), d.getName());
+	      }
+		
+	    sess.setAttribute("eTheatres", dept);	 
+	    
+	    List<Movies> moviesList = moviesRepository.findAll(); 
+	      
+	    Map<Long, String> dept1 = new HashMap<>();
+		// HttpSession sess = request.getSession();
+		
+		for (Movies d : moviesList) {
+	          dept1.put(d.getId(), d.getName());
+	      }
+		
+	    sess.setAttribute("eMovies", dept1);	
+	    
+		return new ModelAndView("reservationsForm", "reservations", aa);
+
+	}	
+	
 
 	@RequestMapping(value = "/save_reservations.html", method = RequestMethod.POST)
 	public String saveReservation(@ModelAttribute("reservations") @Valid Reservations reservations, 
@@ -171,7 +223,7 @@ public class ReservationsController {
 	
     
     @RequestMapping(value = "/update_reservation.html")
-	public String updateTypetypeOfDocuments(@RequestParam Long id, HttpServletRequest request){
+	public String updateReservation(@RequestParam Long id, HttpServletRequest request){
 		request.setAttribute("reservations", reservationsRepository.getOne(id));
 		request.setAttribute("title", "Update reservations");	
 	    List<Reservations> deptList = reservationsRepository.findAll(); 
@@ -201,7 +253,7 @@ public class ReservationsController {
 //    }
 //    
 	@RequestMapping(value = "/delete_reservation.html")
-	public String deleteTypeDocuments(@RequestParam Long id, HttpServletRequest request) {
+	public String deleteReservation(@RequestParam Long id, HttpServletRequest request) {
 
 		try {
 			reservationsRepository.deleteById(id);

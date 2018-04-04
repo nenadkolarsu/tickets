@@ -65,7 +65,7 @@ public class TheatresController {
 
 
 		Theatres aa = new Theatres();
-		// da bi default aktivan bio checked
+
 	    aa.setStatus(true);
 	    Date date = new Date();
 	    aa.setTimestamp(date); 
@@ -158,7 +158,7 @@ public class TheatresController {
 
 		Theatres aa = theatresRepository.getOne(id);
 	    if (!aa.getProjections().isEmpty()) {	
-	    	return "redirect:414.html?ops=Child exist, can't delete parent!";
+	    	return "redirect:414.html?ops=Projection exist, can't delete theatre!";
 	    }
 	    
 		try {
@@ -166,7 +166,7 @@ public class TheatresController {
 		}
 		catch (Exception ex)
 		{
-		    return "redirect:414.html?ops=Can't delete record";
+		    return "redirect:414.html?ops=Can't delete record!";
 		}
 		
 		return "redirect:theatres.html";
@@ -191,5 +191,14 @@ public class TheatresController {
 //        params.put("city",  companyDetails.companyDetails3);
 //        return new ModelAndView(view, params);
 //    }
+	
+    @RequestMapping(value="/theatres_pdf.html")
+    public String selectTag(HttpServletRequest request) {
+
+    	List<Theatres> theatres = theatresRepository.findAll();      
+		request.setAttribute("states", theatres);
+		request.setAttribute("title", "Theatres");
+		return "/printing/printCodebook";    
+    }  
 	
 }

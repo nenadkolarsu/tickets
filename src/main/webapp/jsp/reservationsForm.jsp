@@ -71,44 +71,6 @@
  											</p> 
  										</div> 
 
-
-<%-- 										<div class='form-group ${error != null ? 'has-error' : ''}'> --%>
-<!-- 											<label class='font-awesome'>Date projection</label> -->
-
-<%-- 											<form:input type="date" class="form-control" id="projection_date" --%>
-
-<%-- 												path="projection_date" placeholder='Date projection' --%>
-<%-- 												value="${reservations.projection_date}" /> --%>
-<!-- 											<p class="help-block"> -->
-<%-- 												<form:errors path="projection_date" class="help-block" /> --%>
-<!-- 											</p> -->
-<!-- 										</div> -->
-										
-<%-- 										<div class='form-group ${error != null ? 'has-error' : ''}'> --%>
-<!-- 											<label class='font-awesome'>Projection time </label> -->
-
-<%-- 											<form:input type="time" class="form-control" id="projection_time" --%>
-
-<%-- 												path="projection_time" placeholder='Time projection' --%>
-<%-- 												value="${reservations.projection_time}" /> --%>
-<!-- 											<p class="help-block"> -->
-<%-- 												<form:errors path="projection_time" class="help-block" /> --%>
-<!-- 											</p> -->
-<!-- 										</div> -->
-										
-
-
-<%-- 										<div class="form-group"${error != null ? 'has-error' : ''}'> --%>
-<!-- 											<label class='font-awesome'>Movie</label> -->
-
-<%-- 											<form:select path="movies.id" class="form-control"> --%>
-<%-- 												<form:options items="${eMovies}" /> --%>
-<%-- 											</form:select> --%>
-
-<!-- 											<p class="help-block"> -->
-<%-- 												<form:errors path="movies.id" class="help-block" /> --%>
-<!-- 											</p> -->
-<!-- 										</div>		 -->
 										
 										<div class='form-group'>
 											<label class='font-roboto'>Remark</label>
@@ -163,8 +125,7 @@
 <!-- 										<button type="reset" class="btn-lg button-novi"> -->
 <!-- 											<i class='fa fa-reply'></i> Cancel -->
 <!-- 										</button> -->
-										<input type="button" onclick="location.href='/';" value="Cancel"  class="btn-lg button-novi"/>
-<%-- 										<input type="button" onclick="location.href='dokumentstavkefinal.html?page=0&id=${dokumentStavke.idDokument.id}';" value="Cancel"  class="btn-lg button-novi"/> --%>
+										<input type="button" onclick="location.href='/availableprojections.html';" value="Cancel"  class="btn-lg button-novi"/>
 
 									</form:form>
 								</div>

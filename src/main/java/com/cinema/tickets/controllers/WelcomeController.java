@@ -19,12 +19,15 @@ public class WelcomeController {
 	private Integer rows;
 	@Value("${cinema.seats}")
 	private Integer seats;
+	@Value("${cinema.version}")
+	private Integer version;
 	
 	@RequestMapping("/")
 	public String welcome(Map<String, Object> model) {
 		model.put("message", this.message);
 		model.put("rows", this.rows);
 		model.put("seats", this.seats);
+		model.put("version", this.version);
 		return "welcome";
 	}
 	

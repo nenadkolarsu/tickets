@@ -1,0 +1,95 @@
+
+@page{
+    margin: 5mm 10mm 5mm 10mm;
+    width:100%;
+    padding:0;
+}
+
+@media print{
+	.noprint{
+	display:none; !important
+	}
+}
+
+
+@media all{
+
+html, body{
+    max-width:210mm;
+    color: dimgrey;
+    font-family: 'Calibri-Light' sans-serif;
+    margin:0 auto;
+    -webkit-print-color-adjust: exact;
+
+}
+    
+.partner-heading{
+        margin-bottom:0;
+}
+
+    .border-bottom-dotted{
+        border-bottom:1px dotted lightgrey;
+    }
+    
+.border-bottom{
+    border-bottom:1px solid lightgrey;
+}
+
+.border-up{
+    border:1px solid lightgrey;
+}
+
+.spacer-top-5{
+    margin-top:5px;
+}
+
+.spacer-top-10{
+    margin-top:10px;
+}
+
+.spacer-top-15{
+    margin-top:15px;
+}
+
+.spacer-top-20{
+    margin-top:20px;
+}
+
+.spacer-top-30{
+    margin-top:30px;
+}
+
+    .tableDocuments{
+        width:100%;
+        border:1px solid lightgrey;
+        font-size:12px;
+    }
+    
+    .tableDocuments th{
+        border-top:1px solid lightgrey;
+        border-bottom:1px solid lightgrey;
+        padding: 0 2px 0 2px;
+        background-color:lightgrey;
+        color:#fff;
+    }
+    
+    .tableDocuments tr > td{
+        border-bottom:1px solid lightgrey;
+        padding: 0 2px 0 2px;
+    }
+    
+}
+
+.remark-heading{
+    font-size:13px;
+}
+
+.remark-p{
+    font-size:11px;
+}
+    
+}
+
+*/
+
+    

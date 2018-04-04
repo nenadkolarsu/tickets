@@ -155,4 +155,13 @@ public class CinemasController {
 //        return new ModelAndView(view, params);
 //    }
 //	
+	
+    @RequestMapping(value="/cinemas_pdf.html")
+    public String selectTag(HttpServletRequest request) {
+
+    	List<Cinemas> states = cinemasRepository.findAll();      
+		request.setAttribute("states", states);
+		request.setAttribute("title", "Cinemas");
+		return "/printing/printCodebook";    
+    }    
 }

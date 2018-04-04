@@ -73,40 +73,6 @@
 											</p>
 										</div>
 										
-<!-- 									<input style='width:80px' required name='hora' id='hora' type="time" min="08:00:00" max="20:00:00"/> -->
-
-<%-- 										<fmt:formatDate value="${projections.projection_datetime}" pattern="yyyy-MM-dd hh:mm" var="projection_datetime"/> --%>
-<%-- 										<form:input path="date" value="${projections.projection_datetime}"/> --%>
-										
-<!-- 										    <input id="party" type="datetime-local" name="partydate" -->
-<!--            min="2017-06-01T08:30" max="2017-06-30T16:30" -->
-<!--            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required> -->
-
-<!--                <input id="reserve" type="time" name="appt-time" -->
-<!--            min="12:00" max="18:00" required -->
-<!--            pattern="[0-9]{2}:[0-9]{2}"> -->
-           
-<%--            								<div class='form-group ${error != null ? 'has-error' : ''}'> --%>
-<!-- 											<label class='font-awesome'>Reserve</label> -->
-
-<%-- 											<form:input type="time" class="form-control" id="reserve" --%>
-<%-- 												path="reserve" placeholder='Insert time in format 00:00' pattern="[0-9]{2}:[0-9]{2}" --%>
-<%-- 												value="${projections.reserve}" /> --%>
-<!-- 											<p class="help-block"> -->
-<%-- 												<form:errors path="reserve" class="help-block" /> --%>
-<!-- 											</p> -->
-<!-- 										</div> -->
-										
-<%-- 										<div class='form-group ${error != null ? 'has-error' : ''}'> --%>
-<!-- 											<label class='font-awesome'>Movie</label> -->
-
-<%-- 											<form:input type="text" class="form-control" id="movie" --%>
-<%-- 												path="movie" placeholder='Insert movie' --%>
-<%-- 												value="${projections.movie}" /> --%>
-<!-- 											<p class="help-block"> -->
-<%-- 												<form:errors path="movie" class="help-block" /> --%>
-<!-- 											</p> -->
-<!-- 										</div> -->
 
 										<div class="form-group"${error != null ? 'has-error' : ''}'>
 											<label class='font-awesome'>Movie</label>
@@ -123,7 +89,6 @@
 										
 										<div class='form-group'>
 											<label class='font-roboto'>Remark</label>
-											<%-- 									<textarea class="form-control" name='remark' path='remark'  placeholder='Unesite napomenu' value="${task.remark}"></textarea> --%>
 											<form:textarea type="text" class="form-control" id="remark"
 												path="remark" value="${projections.remark}" placeholder='Enter remark'/>
 											<p class="help-block">
@@ -131,11 +96,11 @@
 											</p>
 										</div>
 
-										<c:out value="${model.projections.status}" />
+<%-- 										<c:out value="${model.projections.status}" /> --%>
 
-										<c:if test="${projections.status}">
-											<c:out value="${projections.code}" />
-										</c:if>
+<%-- 										<c:if test="${projections.status}"> --%>
+<%-- 											<c:out value="${projections.code}" /> --%>
+<%-- 										</c:if> --%>
 
 										<c:set var="salary" scope="session" value="checked">
 										</c:set>
@@ -174,8 +139,7 @@
 <!-- 										<button type="reset" class="btn-lg button-novi"> -->
 <!-- 											<i class='fa fa-reply'></i> Cancel -->
 <!-- 										</button> -->
-										<input type="button" onclick="location.href='/';" value="Cancel"  class="btn-lg button-novi"/>
-<%-- 										<input type="button" onclick="location.href='dokumentstavkefinal.html?page=0&id=${dokumentStavke.idDokument.id}';" value="Cancel"  class="btn-lg button-novi"/> --%>
+										<input type="button" onclick="location.href='/projections.html';" value="Cancel"  class="btn-lg button-novi"/>
 
 									</form:form>
 								</div>

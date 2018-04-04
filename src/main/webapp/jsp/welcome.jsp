@@ -1,8 +1,9 @@
  <%@ include file="top.jsp"%> 
 
 <div class="container">
- <h2>${message}</h2>
+  <h2>${message}</h2>
   <h3>Number of rows: ${rows} Number of seats: ${seats}</h3>
+
   <p></p>
   
 
@@ -53,6 +54,8 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  
+    <h3>Version: ${version}</h3>
 </div>
 
 </body>
