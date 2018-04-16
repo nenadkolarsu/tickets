@@ -1,5 +1,7 @@
 package com.cinema.tickets.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -71,7 +73,14 @@ public class ProjectionsController {
 		request.setAttribute("new_item", "/reservations_new.html");
 		request.setAttribute("print_item", "/projections_pdf.html");
 		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date)); 
+		String currentDate=dateFormat.format(date);
+		request.setAttribute("currentDate", currentDate);
+		
 		return "availableprojections";
+//		return "availableprojections?from_date="+currentDate;
 	}	
 	
 	@RequestMapping(value = "/projections_new.html", method = RequestMethod.GET)
@@ -147,10 +156,24 @@ public class ProjectionsController {
 		return aa; 
 	}
 	
-    
+	@RequestMapping(path="/getAllProjectionsFromToday", method=RequestMethod.GET)
+	public @ResponseBody List<Projections> getProjectionsFromDate(){
+		
+		// List<Projections> aa = projectionsRepository.findAll();
+		List<Projections> aa = projectionsRepository.findProjectionsFromCurrentDate();
+	
+		 for (Iterator iterator = aa.iterator(); iterator.hasNext();) {
+			 Projections dokument = (Projections) iterator.next();
+			 dokument.setAction("<a href=\"update_projections.html?id=" + dokument.getId() + "\"> " + "<i class=\"fa fa-pencil-square-o edit-delete-icon\"></i> </a> "
+					+ "            <a href=\"delete_projections.html?id=" + dokument.getId() + "\" Onclick=\"return ConfirmDelete();\"> " + "<i class=\"fa fa-trash-o edit-delete-icon\"></i> </a>");
+		}
+
+		return aa; 
+	}
     @RequestMapping(value = "/update_projection.html")
 	public String updateTypetypeOfDocuments(@RequestParam Long id, HttpServletRequest request){
 		request.setAttribute("projections", projectionsRepository.getOne(id));
+		
 		request.setAttribute("title", "Update projections");	
 	    List<Projections> deptList = projectionsRepository.findAll(); 
 	      

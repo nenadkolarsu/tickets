@@ -51,10 +51,7 @@ public class Projections implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Long id;
-    
-//    @Column(name = "id_cinema")
-//    private Long idVrstaDokumenta;    
+    private Long id; 
     
     @ManyToOne(optional = false)
     @JoinColumn(name="id_theatre")
@@ -63,8 +60,11 @@ public class Projections implements Serializable {
     @ManyToOne(optional = false)
     @JoinColumn(name="id_movie")
     private Movies movies;   
-    
-    
+        
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "projections")
+    private List<Reservations> reservations = new ArrayList<>();
+        
     private String code;
 //    private String name;
     
@@ -90,9 +90,8 @@ public class Projections implements Serializable {
     @Column(name = "projection_datetime")
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern="dd.MM.yyyy hh:mm")
+
     private Date projection_datetime;
-
-
 
     public Projections() {
     }
@@ -126,14 +125,6 @@ public class Projections implements Serializable {
 	public void setCode(String code) {
 		this.code = code;
 	}
-//
-//	public String getName() {
-//		return name;
-//	}
-//
-//	public void setName(String name) {
-//		this.name = name;
-//	}
 
 	public String getRemark() {
 		return remark;
@@ -199,19 +190,13 @@ public class Projections implements Serializable {
 	public void setProjection_date(Date projection_date) {
 		this.projection_date = projection_date;
 	}
-
-//	public Time getProjection_time() {
-//		return projection_time;
-//	}
-//
-//	public void setProjection_time(Time projection_time) {
-//		this.projection_time = projection_time;
-//	}
-	
-	
 	
 	public Date getProjection_datetime() {
 		return projection_datetime;
+	}
+	
+	public void setProjection_datetime(Date projection_datetime) {
+		this.projection_datetime = projection_datetime;
 	}
 
 	public String getProjection_time() {
@@ -221,10 +206,14 @@ public class Projections implements Serializable {
 	public void setProjection_time(String projection_time) {
 		this.projection_time = projection_time;
 	}
-
-	public void setProjection_datetime(Date projection_datetime) {
-		this.projection_datetime = projection_datetime;
-	}
+	
+//	public Time getProjection_time() {
+//	return projection_time;
+//	}
+//
+//	public void setProjection_time(Time projection_time) {
+//	this.projection_time = projection_time;
+//	}
 
 	@Override
 	public String toString() {
@@ -240,11 +229,6 @@ public class Projections implements Serializable {
 	public void setMovies(Movies movies) {
 		this.movies = movies;
 	}
-    
-
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "projections")
-    private List<Reservations> reservations = new ArrayList<>();
 
 	public List<Reservations> getReservations() {
 		return reservations;

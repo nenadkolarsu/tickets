@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -59,9 +60,9 @@ public class ReservationsController {
 	private ReservationsRepository reservationsRepository;
 
 	@Value("${cinema.rows}")
-	private Integer rows;
+	private String rows;
 	@Value("${cinema.seats}")
-	private Integer seats;
+	private String seats;
 	
 	@RequestMapping(value = "/reservations.html")
 	public String reservationsView(HttpServletRequest request) {
@@ -121,8 +122,9 @@ public class ReservationsController {
 
 	}	
 	
-	@RequestMapping(value = "/reservations_new1.html", method = RequestMethod.GET)
-	public ModelAndView newReservation1(Model model, HttpServletRequest request, @RequestParam Long id) { 
+	@RequestMapping(value = "/projection_reservation.html", method = RequestMethod.GET)
+	public ModelAndView newReservation1(Model model, HttpServletRequest request, @RequestParam Long id) {
+		
 		model.addAttribute("title", "New reservation");
 
 		Reservations aa = new Reservations();
@@ -132,8 +134,6 @@ public class ReservationsController {
 	    aa.setTimestamp(date); 
 
 	    Projections dd = projectionsRepository.getOne(id);
-	    
-//	    List<Projections> deptList0 = projectionsRepository.findAll(); 
 	      
 	    Map<Long, String> dept0 = new HashMap<>();
 		HttpSession sess = request.getSession();
@@ -160,14 +160,19 @@ public class ReservationsController {
 	    List<Movies> moviesList = moviesRepository.findAll(); 
 	      
 	    Map<Long, String> dept1 = new HashMap<>();
-		// HttpSession sess = request.getSession();
 		
 		for (Movies d : moviesList) {
 	          dept1.put(d.getId(), d.getName());
 	      }
 		
-	    sess.setAttribute("eMovies", dept1);	
-	    
+	    sess.setAttribute("eMovies", dept1);
+
+		Integer maxrowsintheatre = theatresRepository.findNumberOfRowsForTheatre(dd.getTheatres().getId());
+		Integer maxseatsintheatre = theatresRepository.findNumberOfSeatsForTheatre(dd.getTheatres().getId());
+
+		model.addAttribute("maxrowsintheatre", maxrowsintheatre);
+		model.addAttribute("maxseatsintheatre", maxseatsintheatre);
+
 		return new ModelAndView("reservationsForm", "reservations", aa);
 
 	}	
@@ -183,13 +188,28 @@ public class ReservationsController {
 			return "reservationsForm";
 		}
 		
-		if (reservations.getRow()>this.rows) {
-			return "redirect:414.html?ops=Maximal number of row is " + this.rows;
-		}
+		Long p0 = reservations.getProjections().getId();	
+		Projections p1 = projectionsRepository.getOne(p0); // .findById(p0)
 		
-		if (reservations.getSeat()>this.seats) {
-			return "redirect:414.html?ops=Maximal number of seat is " + this.seats;
+		Integer numberOfRowsInTheatre = theatresRepository.findNumberOfRowsForTheatre(p1.getTheatres().getId());
+
+		if (reservations.getRow()>numberOfRowsInTheatre) {
+			return "redirect:414.html?ops=Cant reserve row " + reservations.getRow() + ". Maximal number of rows is " + numberOfRowsInTheatre;
 		}
+
+		Integer numberOfSeatsInTheatre = theatresRepository.findNumberOfSeatsForTheatre(p1.getTheatres().getId());
+		
+		if (reservations.getSeat()>numberOfSeatsInTheatre) {
+			return "redirect:414.html?ops=Can't reserve seat " + reservations.getSeat() + ". Maximal number of seat is " + numberOfSeatsInTheatre;
+		}
+				
+//		if (reservations.getRow()>this.rows) {
+//			return "redirect:414.html?ops=Maximal number of row is " + this.rows;
+//		}
+//		
+//		if (reservations.getSeat()>this.seats) {
+//			return "redirect:414.html?ops=Maximal number of seat is " + this.seats;
+//		}
 		
 		Long m = reservationsRepository.findReservationByIdProjections(reservations.getProjections().getId(), reservations.getRow(), reservations.getSeat());
 	

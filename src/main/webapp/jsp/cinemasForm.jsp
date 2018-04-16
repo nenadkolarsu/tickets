@@ -65,11 +65,11 @@
 											</p>
 										</div>
 
-										<c:out value="${model.cinemas.status}" />
+<%-- 										<c:out value="${model.cinemas.status}" /> --%>
 
-										<c:if test="${cinemas.status}">
-											<c:out value="${cinemas.code}" />
-										</c:if>
+<%-- 										<c:if test="${cinemas.status}"> --%>
+<%-- 											<c:out value="${cinemas.code}" /> --%>
+<%-- 										</c:if> --%>
 
 										<c:set var="salary" scope="session" value="checked">
 										</c:set>

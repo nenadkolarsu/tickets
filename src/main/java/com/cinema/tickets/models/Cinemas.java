@@ -19,12 +19,13 @@ import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import javax.validation.constraints.NotEmpty;
+// depreciated import org.hibernate.validator.constraints.NotEmpty;
+
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -52,7 +53,7 @@ public class Cinemas implements Serializable {
 
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cinemas")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cinemas") // LAZY is default
     private List<Theatres> theatres = new ArrayList<>();
     
     public Cinemas(){
@@ -113,10 +114,12 @@ public class Cinemas implements Serializable {
 	public Date getTimestamp() {
 		return timestamp;
 	}
+	
     @PrePersist
     protected void onCreate() {
     	timestamp = new Date();
     }
+    
     @PreUpdate
     protected void onUpdate() {
     	timestamp = new Date();
@@ -187,8 +190,26 @@ public class Cinemas implements Serializable {
 	    }
 	}
 	
+	
+//
+// Sample of @PreRemove
+// *********************	
+//	@PreRemove
+//	public void preRemove() {
+//		Set<PaymentMethod> paymentMethods = getPaymentMethods();
+//		if (paymentMethods != null) {
+//			for (PaymentMethod paymentMethod : paymentMethods) {
+//				paymentMethod.getShippingMethods().remove(this);
+//			}
+//		}
+//		Set<Order> orders = getOrders();
+//		if (orders != null) {
+//			for (Order order : orders) {
+//				order.setShippingMethod(null);
+//			}
+//		}
+//	}
 
-    
-    
+//	 That's a fundamental feature of JPA/Hibernate. All the changes made to attached entities are automatically made persistent: Hibernate manages them, so it compares their current state with their initial state, and automatically makes all the changes persistent.
     
 }

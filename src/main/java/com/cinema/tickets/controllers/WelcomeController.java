@@ -15,18 +15,18 @@ public class WelcomeController {
 	// inject via application.properties
 	@Value("${welcome.message:test}")
 	private String message = "Hello World";
-	@Value("${cinema.rows}")
-	private Integer rows;
-	@Value("${cinema.seats}")
-	private Integer seats;
+//	@Value("${cinema.rows}")
+//	private Integer rows;
+//	@Value("${cinema.seats}")
+//	private Integer seats;
 	@Value("${cinema.version}")
 	private Integer version;
 	
 	@RequestMapping("/")
 	public String welcome(Map<String, Object> model) {
 		model.put("message", this.message);
-		model.put("rows", this.rows);
-		model.put("seats", this.seats);
+//		model.put("rows", this.rows);
+//		model.put("seats", this.seats);
 		model.put("version", this.version);
 		return "welcome";
 	}
@@ -36,6 +36,12 @@ public class WelcomeController {
 		request.setAttribute("ops", ops);	
         return "414";
     }
+    
+    @RequestMapping(value="/help.html")
+    public String Help(Map<String, Object> model){
+		model.put("version", this.version);
+        return "help";
+    }    
     
 
 }

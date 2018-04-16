@@ -67,10 +67,12 @@
              <table class="display table table-striped table-bordered table-hover border-radius-0">
             <thead>
             <th style="width: 7%;">Id&nbsp;<a ng-click="sort_by('id');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
-            <th style="width: 10%;">Cinema&nbsp;<a ng-click="sort_by('id_cinema');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
-            <th style="width: 15%;">Code&nbsp;<a ng-click="sort_by('code');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
-            <th style="width: 30%;">Name&nbsp;<a ng-click="sort_by('name');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
-            <th style="width: 20%;">Remark&nbsp;<a ng-click="sort_by('remark');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
+            <th style="width: 15%;">Cinema&nbsp;<a ng-click="sort_by('id_cinema');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
+            <th style="width: 10%;">Code&nbsp;<a ng-click="sort_by('code');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
+            <th style="width: 20%;">Name&nbsp;<a ng-click="sort_by('name');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
+            <th style="width: 7%;">Rows&nbsp;<a ng-click="sort_by('rows');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
+            <th style="width: 7%;">Seats&nbsp;<a ng-click="sort_by('seats');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
+            <th style="width: 14%;">Remark&nbsp;<a ng-click="sort_by('remark');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
             <th style="width: 6%;">Status&nbsp;<a ng-click="sort_by('status');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
             <th style="width: 7%;">Action&nbsp;<a ng-click="sort_by('status');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
            </thead>
@@ -80,6 +82,8 @@
                     <td>{{data.cinemas.name}}</td>
                     <td>{{data.code}}</td>
                     <td>{{data.name}}</td>
+                    <td>{{data.rows}}</td>
+                    <td>{{data.seats}}</td>
                     <td>{{data.remark}}</td>
                     <td>{{data.status}}</td>
                     

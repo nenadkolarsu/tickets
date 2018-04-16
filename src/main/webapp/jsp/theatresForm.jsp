@@ -19,6 +19,7 @@
 						<div class='panel-heading'>${title}</div>
 						<div class='panel-body'>
 							<div class='row'>
+							
 								<div class='col-lg-6'>
 
 									<form:form method="POST" action="save_theatres.html"
@@ -67,6 +68,38 @@
 												<form:errors path="name" class="help-block" />
 											</p>
 										</div>
+									
+										<div class='row'>
+										
+										<div class='col-lg-6'>				
+										<div class='form-group ${error != null ? 'has-error' : ''}'>
+											<label class='font-awesome'>Number of rows</label>
+
+											<form:input type="number" class="form-control" id="rows"
+												path="rows" placeholder='Insert number of rows'
+												value="${theatres.rows}" />
+											<p class="help-block">
+												<form:errors path="rows" class="help-block" />
+											</p>
+										</div>								
+										</div>
+							
+								  <div class='col-lg-6'>
+										<div class='form-group ${error != null ? 'has-error' : ''}'>
+											<label class='font-awesome'>Number of seats per row</label>
+
+											<form:input type="number" class="form-control" id="seats"
+												path="seats" placeholder='Insert number of seats per row'
+												value="${theatres.seats}" />
+											<p class="help-block">
+												<form:errors path="seats" class="help-block" />
+											</p>
+										</div>
+									</div>
+										
+										</div>
+								
+																				
 
 										<div class='form-group'>
 											<label class='font-roboto'>Remark</label>
@@ -78,11 +111,12 @@
 											</p>
 										</div>
 
-										<c:out value="${model.theatres.status}" />
 
-										<c:if test="${theatres.status}">
-											<c:out value="${theatres.code}" />
-										</c:if>
+<%-- 										<c:out value="${model.theatres.status}" /> --%>
+
+<%-- 										<c:if test="${theatres.status}"> --%>
+<%-- 											<c:out value="${theatres.code}" /> --%>
+<%-- 										</c:if> --%>
 
 										<c:set var="salary" scope="session" value="checked">
 										</c:set>
@@ -124,6 +158,8 @@
 										<input type="button" onclick="location.href='/theatres.html';" value="Cancel"  class="btn-lg button-novi"/>
 									</form:form>
 								</div>
+								
+
 							</div>
 						</div>
 					</div>

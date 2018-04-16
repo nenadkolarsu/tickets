@@ -30,8 +30,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+//depreciated import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -55,6 +57,8 @@ public class Theatres implements Serializable {
     
     private String code;
     private String name;
+    private Integer rows;
+    private Integer seats;
     private String remark;
 	private String action;
 	private Date timestamp;
@@ -97,7 +101,9 @@ public class Theatres implements Serializable {
 	public void setCode(String code) {
 		this.code = code;
 	}
-
+	
+	@Column(name = "name")
+	@NotEmpty  
 	public String getName() {
 		return name;
 	}
@@ -161,6 +167,26 @@ public class Theatres implements Serializable {
 
 	public void setProjections(List<Projections> projections) {
 		this.projections = projections;
+	}
+	
+    @NotNull
+    @Min(1)
+	public Integer getRows() {
+		return rows;
+	}
+
+	public void setRows(Integer rows) {
+		this.rows = rows;
+	}
+	
+    @NotNull	
+    @Min(1)
+	public Integer getSeats() {
+		return seats;
+	}
+
+	public void setSeats(Integer seats) {
+		this.seats = seats;
 	}
 
 	@Override

@@ -8,7 +8,7 @@
 
 <html lang="en">
 <head>
-  <title>Ticketing</title>
+  <title>Booking theater tickets </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -56,6 +56,7 @@
         
         <li><a href='/availableprojections.html'>Make reservation</a></li>
         <li><a href="/reservations.html">View reservations</a></li>
+		<li><a href="/help.html">Help</a></li>        
 
 <!--         <li><a href="#">Page 3</a></li> -->
       </ul>

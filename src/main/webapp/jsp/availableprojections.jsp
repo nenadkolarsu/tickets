@@ -11,7 +11,7 @@
 				<div class='col-lg-12 '>
 					<div class='panel panel-default margin-top-10 border-radius-0'>
 
-						<div class='panel-heading'>${title}</div>
+						<div class='panel-heading'>${title} from date ${currentDate}</div>
 
 						<div class='panel-body'>
 						
@@ -70,7 +70,7 @@
             <th style="width: 15%;">Theatres&nbsp;<a ng-click="sort_by('id_theatre');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
             <th style="width: 6%;">Projection Code&nbsp;<a ng-click="sort_by('code');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
             <th style="width: 20%;">Movie&nbsp;<a ng-click="sort_by('id_movie');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
-            <th style="width: 7%;">Date&nbsp;<a ng-click="sort_by('data.projection_date');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
+            <th style="width: 7%;">Date &nbsp;<a ng-click="sort_by('data.projection_date');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
             <th style="width: 7%;">Time&nbsp;<a ng-click="sort_by('projection_date');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>         
             <th style="width: 6%;">Status&nbsp;<a ng-click="sort_by('status');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
             <th style="width: 11%;">Action&nbsp;<a ng-click="sort_by('status');"><i class="glyphicon glyphicon-sort sort-arrows"></i></a></th>
@@ -90,7 +90,7 @@
 <!--                         <a href="update_projection.html?id={{data.id}}"><i class="glyphicon glyphicon-file"></i></a>  -->
 <!--                         <a href="delete_projection.html?id={{data.id}}" onClick="return ConfirmDelete();"><i class="glyphicon glyphicon-trash"></i></a> -->
 
-                        <a href="reservations_new1.html?id={{data.id}}"><i class="glyphicon glyphicon-phone-alt"></i>&nbsp Reserve</a>
+                        <a href="projection_reservation.html?id={{data.id}}"><i class="glyphicon glyphicon-phone-alt"></i>&nbsp Reserve</a>
                         
                          
                     </td>
@@ -140,7 +140,9 @@
           <h4 class="modal-title">Reserve</h4>
         </div>
         <div class="modal-body">
-          <p>Click on telephone icon and make reservation for the projection. </p>
+          <p>Review of available projections from today's date  </p>
+          <p>Click on telephone icon and make a reservation for the projection. </p>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -155,7 +157,7 @@
 
 <script src="https://code.angularjs.org/1.2.32/angular.js"></script>
 <script src="jsp/ui-bootstrap-tpls-0.10.0.min.js"></script>
-<script src="jsp/projections.js"></script>
+<script src="jsp/availableprojections.js"></script>
 
 
 <script>

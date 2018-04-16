@@ -52,7 +52,7 @@
 										<div class='form-group ${error != null ? 'has-error' : ''}'>
 											<label class='font-awesome'>Date projection</label>
 
-											<form:input type="date" class="form-control" id="projection_date"
+											<form:input type="date" dateformat="d M y" class="form-control" id="projection_date"
 
 												path="projection_date" placeholder='Date projection'
 												value="${projections.projection_date}" />
@@ -73,7 +73,19 @@
 											</p>
 										</div>
 										
+<!-- 										Note: <input> elements with type="datetime-local" do not show as any datetime field/calendar in Firefox or in IE12 and earlier versions. -->
+<%-- 										<div class='form-group ${error != null ? 'has-error' : ''}'> --%>
+<!-- 											<label class='font-awesome'>Projection date-time </label> -->
 
+<%-- 											<form:input type="datetime-local" class="form-control" id="projection_datetime" --%>
+
+<%-- 												path="projection_datetime" placeholder='Datetime projection' --%>
+<%-- 												value="${projections.projection_datetime}" /> --%>
+<!-- 											<p class="help-block"> -->
+<%-- 												<form:errors path="projection_datetime" class="help-block" /> --%>
+<!-- 											</p> -->
+<!-- 										</div> -->
+										
 										<div class="form-group"${error != null ? 'has-error' : ''}'>
 											<label class='font-awesome'>Movie</label>
 

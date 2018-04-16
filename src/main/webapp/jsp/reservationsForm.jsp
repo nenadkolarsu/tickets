@@ -52,7 +52,7 @@
 
 											<form:input type="number" class="form-control " name="row"
  												path="row" value="${reservations.row}"  
- 												placeholder='Insert row number' /> 
+ 												placeholder=" Max number of rows = ${maxrowsintheatre}"   /> 
 
 											<p class="help-block">
  												<form:errors path="row" class="help-block text-danger" /> 
@@ -63,8 +63,8 @@
 											<label class='font-oxygen'>Seat</label>
 
 											<form:input type="number" class="form-control " name="seat"
- 												path="seat" value="${reservations.seat}" autofocus="true" 
- 												placeholder='Insert seat number' /> 
+ 												path="seat" value="${reservations.seat}" 
+ 												placeholder=" Max number of seats = ${maxseatsintheatre}"  /> 
 
 											<p class="help-block">
  												<form:errors path="seat" class="help-block text-danger" /> 
@@ -84,6 +84,7 @@
 
 <%-- 										<c:out value="${reservations.status}" /> --%>
 
+										 
 <%-- 										<c:if test="${reservations.status}"> --%>
 <%-- 											<c:out value="${reservations.status}" /> --%>
 <%-- 										</c:if> --%>
